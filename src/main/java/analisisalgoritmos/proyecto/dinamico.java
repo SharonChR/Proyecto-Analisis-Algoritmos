@@ -3,6 +3,7 @@ package analisisalgoritmos.proyecto;
 import com.google.common.collect.Sets;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Given a set of number eg {5,3,1,8, -8,-4}
@@ -14,6 +15,13 @@ import java.util.*;
 
 public class dinamico {
     public Set<ArrayList<Integer>> subSets = Sets.newHashSet();
+    
+    
+    public dinamico(){}
+    
+    public void aplicarMetodoDinamico(ArrayList<Integer> input){
+        subSets2(input);
+    }
 
     public void getSubSets(ArrayList<Integer> input, ArrayList<Integer> subset) {
         if (getValue(subset) == 0 && !subset.isEmpty()) {
@@ -63,15 +71,24 @@ public class dinamico {
 
     public static void main(String[] args) {
         dinamico subsetSumZero = new dinamico();
+        Arreglos arreglo = new Arreglos();
 //        ArrayList<Integer> input = new ArrayList<Integer>(Arrays.asList(5, 3, 1, 8, -8, -4));
-        ArrayList<Integer> input = new ArrayList<Integer>(Arrays.asList(1, -2, 2, -3, 5, 6, 12, 10, -4, -69, 84, 75, -61, 22, 85, 102, -65, 56, 84, -677, 94, 123, 555, -612, -55, 852, -93, -97, -51, -73));
+
+        int intArrays [] = {10,-10,30,40};
+        
+        ArrayList<Integer> input2 = (ArrayList<Integer>) Arrays.stream(arreglo.arregloQuemado(4)).boxed().collect(Collectors.toList());
+        
+       
+
+
+        ArrayList<Integer> input = new ArrayList<Integer>(Arrays.asList(1, -2, 2, -3, 5, 6, 12, 2, -55, 852, -93, -97, -51, -73));
 //        subsetSumZero.getSubSets(input, new ArrayList<Integer>());
 //        for (ArrayList<Integer> subset : subsetSumZero.subSets) {
 //            if (subset.size() < 4) {
 //                System.out.println(subset);
 //            }
 //        }
-        subsetSumZero.subSets2(input);
+        subsetSumZero.subSets2(input2);
         //System.out.println(subsetSumZero.getSubsets(input));
     }
     int sum = 0;

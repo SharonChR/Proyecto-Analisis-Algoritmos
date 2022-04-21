@@ -4,6 +4,10 @@
  */
 package analisisalgoritmos.proyecto;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 /**
  *
  * @author garroakion
@@ -11,11 +15,14 @@ package analisisalgoritmos.proyecto;
 public class Main {
     public static Arreglos creadorArreglos = new Arreglos();
     public static FuerzaBruta metodoFuerzaBruta = new FuerzaBruta();
-    public static programacionDinamica metodoDinamico = new programacionDinamica();
+    public static dinamico metodoDinamico = new dinamico();
     
     public static void ejecutarMetodos(int n){
         int [] arreglo = creadorArreglos.arregloQuemado(n);
         int [] aleatorio = creadorArreglos.arregloAleatorio(n);
+        
+        ArrayList<Integer> listaArreglo = (ArrayList<Integer>) Arrays.stream(arreglo).boxed().collect(Collectors.toList());
+        ArrayList<Integer> listaAleatorio = (ArrayList<Integer>) Arrays.stream(aleatorio).boxed().collect(Collectors.toList());
         
         System.out.println("Fuerza Bruta ---  Arreglo Quemado");
         metodoFuerzaBruta.aplicarFB(arreglo);
@@ -24,9 +31,9 @@ public class Main {
         System.out.println("--------------------------------------------------------------------------"); 
         
         System.out.println("Programción Dinamica ---  Arreglo Quemado");
-        System.out.println(metodoDinamico.aplicarMetodoDinamico(0, 0, arreglo, n)-1);
+        metodoDinamico.aplicarMetodoDinamico(listaArreglo);
         System.out.println("Programción Dinamica ---  Arreglo Aleatorio");
-        System.out.println(metodoDinamico.aplicarMetodoDinamico(0, 0, aleatorio, n)-1);
+        metodoDinamico.aplicarMetodoDinamico(listaAleatorio);
         System.out.println("--------------------------------------------------------------------------"); 
         
         
@@ -36,10 +43,10 @@ public class Main {
     public static void main(String[] args) {
       
   
-       int tamaño = 30;
-       int [] arreglo = creadorArreglos.arregloAleatorio(tamaño);
-       metodoFuerzaBruta.aplicarFB(arreglo);
-      /* while (tamaño <= 7) {            
+       int tamaño = 4;
+  
+     
+       while (tamaño <= 7) {            
             ejecutarMetodos(tamaño);
             tamaño++;
         }
@@ -50,8 +57,8 @@ public class Main {
         }
         tamaño += 4;
         ejecutarMetodos(tamaño);
-        tamaño += 10;*/
-        //ejecutarMetodos(tamaño);
+        tamaño += 10;
+        ejecutarMetodos(tamaño);
         
   
   
